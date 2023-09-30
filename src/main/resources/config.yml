@@ -1,0 +1,5 @@
+teleported-spawn: "Teleported to spawn!"
+set-spawn: "Set spawn at your location!"
+teleported-checkpoint: "Teleported to last checkpoint!"
+set-checkpoint: "Checkpoint!"
+no-checkpoint: "You have no checkpoint yet!"

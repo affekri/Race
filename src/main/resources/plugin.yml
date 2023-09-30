@@ -1,0 +1,20 @@
+name: Race
+version: '${project.version}'
+main: net.derfla.race.Race
+api-version: 1.20
+author: AffeKri
+commands:
+  spawn:
+    usage: /<command>
+    description: Teleports you to spawn.
+    permission: race.race
+    permission-message: You do not have <permission>
+  race:
+    usage: /<command>
+    permission: race.race
+    permission-message: You do not have <permission>
+  checkpoint:
+    usage: /<command>
+    description: Teleports you to your last checkpoint.
+    permission: race.race
+    permission-message: You do not have <permission>
