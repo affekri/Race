@@ -25,7 +25,7 @@ public final class Race extends JavaPlugin implements Listener, CommandExecutor 
 
         // Set executors for commands
         getCommand("checkpoint").setExecutor(new checkpointCommand(this));
-        getCommand("race").setExecutor(new raceCommand());
+        getCommand("race").setExecutor(new raceCommand(this));
         getCommand("spawn").setExecutor(new spawnCommand(this));
 
         // Save config file
