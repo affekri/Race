@@ -3,6 +3,7 @@ net\derfla\race\listeners\PlayerInteractListener.class
 net\derfla\race\commands\spawnCommand.class
 net\derfla\race\utils\raceTime.class
 net\derfla\race\commands\raceCommand.class
+net\derfla\race\listeners\PlayerQuitListener.class
 net\derfla\race\listeners\PlayerJoinListener.class
 net\derfla\race\Race.class
 net\derfla\race\commands\checkpointCommand.class

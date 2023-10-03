@@ -7,16 +7,14 @@ import org.bukkit.entity.Player;
 
 public class checkpoint {
 
-    private static Race plugin;
+    private final Race plugin;
 
     public checkpoint(Race plugin) {
-        checkpoint.plugin = plugin;
-
-
+        this.plugin = plugin;
     }
 
 
-    public static void teleport(Player player) {
+    public void teleport(Player player) {
         // Teleport player to spawn
 
         String name = player.getName();
@@ -39,12 +37,9 @@ public class checkpoint {
                 player.sendMessage(ChatColor.GREEN + "Teleported to last checkpoint!");
             }
         }
-
-
-
     }
 
-    public static void set (Player player) {
+    public void set (Player player) {
         // Set checkpoint at players location
         // Get location and name of the player
         Location location = player.getLocation();

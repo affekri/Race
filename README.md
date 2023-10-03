@@ -11,3 +11,4 @@ To track the race pressure plates are used.
 ## List of commands  
 - /Spawn - Teleports you to spawn. With the argument set, sets the spawn point.  
 - /Checkpoint - Teleports you to your last checkpoint.  
+- /Race - Get results from the race

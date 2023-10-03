@@ -6,6 +6,7 @@ author: AffeKri
 commands:
   spawn:
     usage: /<command>
+    description: Teleports you to spawn.
     permission: race.race
     permission-message: You do not have <permission>
   race:
@@ -14,5 +15,6 @@ commands:
     permission-message: You do not have <permission>
   checkpoint:
     usage: /<command>
+    description: Teleports you to your last checkpoint.
     permission: race.race
     permission-message: You do not have <permission>
