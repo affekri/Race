@@ -1,9 +1,7 @@
 package net.derfla.race.listeners;
 
 import net.derfla.race.Race;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.Material;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -47,6 +45,7 @@ public class PlayerInteractListener implements Listener {
     public void startTime(Player player) {
         time.put(player.getName(), System.currentTimeMillis());
         player.sendMessage(ChatColor.YELLOW + "Timer started!");
+        player.playNote(player.getLocation(), Instrument.PIANO, new Note(8));
     }
 
     public void stopTime(Player player) {
@@ -59,9 +58,10 @@ public class PlayerInteractListener implements Listener {
 
             return;
         }
+        player.playSound(player.getLocation(), "entity.firework_rocket.large_blast", 1.0f, 1.0f);
         Long finalRaceTime = System.currentTimeMillis() - time.get(player.getName());
         // Change time format to seconds
-        Long secsRaceTime = finalRaceTime / 1000;
+        float secsRaceTime = finalRaceTime / 1000f;
         // Save time if it's better than earlier attempts.
         time.put(player.getName(), null);
         if (plugin.getConfig().get(player.getName() + ".time") == null){
@@ -97,17 +97,18 @@ public class PlayerInteractListener implements Listener {
         String name = player.getName();
         Location location = plugin.getConfig().getLocation(name + ".checkpoint");
         if (location == null ){
-            String nocheckmessage = plugin.getConfig().getString("no-checkpoint");
-            if (nocheckmessage != null){
-                player.sendMessage(ChatColor.RED + nocheckmessage);
+            String noCheckMessage = plugin.getConfig().getString("no-checkpoint");
+            if (noCheckMessage != null){
+                player.sendMessage(ChatColor.RED + noCheckMessage);
             } else {
                 player.sendMessage(ChatColor.RED + "You have no checkpoint yet!");
             }
         }else{
             player.teleport(location);
-            String teleportmessage = plugin.getConfig().getString("teleported-checkpoint");
-            if (teleportmessage != null){
-                player.sendMessage(ChatColor.GREEN + teleportmessage);
+            player.playSound(player.getLocation(), "entity.player.small_fall", 1.0f, 1.0f);
+            String teleportMessage = plugin.getConfig().getString("teleported-checkpoint");
+            if (teleportMessage != null){
+                player.sendMessage(ChatColor.GREEN + teleportMessage);
             } else {
                 System.out.println("teleported-checkpoint = null!");
                 player.sendMessage(ChatColor.GREEN + "Teleported to last checkpoint!");
@@ -124,9 +125,10 @@ public class PlayerInteractListener implements Listener {
         plugin.getConfig().set(name + ".checkpoint", location);
         // Saves the config
         plugin.saveConfig();
-        String setmessage = plugin.getConfig().getString("set-checkpoint");
-        if (setmessage != null){
-            player.sendMessage(ChatColor.GREEN + setmessage);
+        player.playSound(player.getLocation(), "entity.arrow.hit_player", 1.0f, 1.0f);
+        String setMessage = plugin.getConfig().getString("set-checkpoint");
+        if (setMessage != null){
+            player.sendMessage(ChatColor.GREEN + setMessage);
         } else {
             System.out.println("set-checkpoint = null!");
             player.sendMessage(ChatColor.GREEN + "Checkpoint!");
